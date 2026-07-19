@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>V. Roopak — Software Engineer</title>
+<meta name="description" content="Portfolio of V. Roopak — Integrated M.Tech Software Engineering student, VIT Chennai. Builder of StudySync, Paper2Portal, and Quiz Management System." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F8;
+    --panel:#FFFFFF;
+    --ink:#111A2E;
+    --ink-soft:#4A5468;
+    --navy:#1B2A4A;
+    --navy-deep:#0E1626;
+    --teal:#2F81A3;
+    --teal-soft:#E4EEF2;
+    --gold:#B8863B;
+    --line:#DCE1E8;
+    --line-soft:#EAEDF1;
+    --radius:10px;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--navy);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(245,246,248,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:18px;
+    color:var(--navy);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 0 4px var(--teal-soft);
+  }
+  nav.links{
+    display:flex;
+    gap:28px;
+    font-size:14px;
+    font-weight:500;
+  }
+  nav.links a{
+    text-decoration:none;
+    color:var(--ink-soft);
+    position:relative;
+    padding-bottom:4px;
+    transition:color .2s ease;
+  }
+  nav.links a:hover{color:var(--navy);}
+  nav.links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0%; height:2px;
+    background:var(--teal);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    text-decoration:none;
+    color:var(--paper);
+    background:var(--navy);
+    padding:9px 16px;
+    border-radius:6px;
+    transition:background .2s ease, transform .2s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--teal); transform:translateY(-1px);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--navy-deep);
+    color:#EDF1F7;
+    overflow:hidden;
+    padding:96px 0 84px;
+  }
+  #graph{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    opacity:0.55;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:#8FD4E8;
+    letter-spacing:0.04em;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow .cursor{
+    display:inline-block;
+    width:8px;height:15px;
+    background:#8FD4E8;
+    animation:blink 1s steps(1) infinite;
+  }
+  @keyframes blink{50%{opacity:0;}}
+  .hero h1{
+    color:#FFFFFF;
+    font-size:clamp(36px, 6vw, 62px);
+    font-weight:700;
+    line-height:1.05;
+    margin-bottom:18px;
+  }
+  .hero h1 .accent{color:#8FD4E8;}
+  .hero p.lede{
+    max-width:600px;
+    font-size:17px;
+    color:#B7C1D4;
+    margin-bottom:34px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:56px;
+  }
+  .btn{
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    text-decoration:none;
+    padding:13px 24px;
+    border-radius:7px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-primary{
+    background:#8FD4E8;
+    color:#0E1626;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(143,212,232,0.25);}
+  .btn-ghost{
+    background:transparent;
+    color:#EDF1F7;
+    border:1px solid rgba(237,241,247,0.28);
+  }
+  .btn-ghost:hover{border-color:#8FD4E8; color:#8FD4E8; transform:translateY(-2px);}
+
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:#7E8AA3;
+    border-top:1px solid rgba(237,241,247,0.12);
+    padding-top:22px;
+  }
+  .hero-meta a{text-decoration:none; color:#B7C1D4; transition:color .2s ease;}
+  .hero-meta a:hover{color:#8FD4E8;}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{
+    padding:80px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+  }
+  .sec-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--teal);
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+    display:block;
+  }
+  .sec-head h2{
+    font-size:30px;
+  }
+  .sec-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    max-width:260px;
+    text-align:right;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .about-grid p{
+    font-size:16px;
+    color:var(--ink-soft);
+    margin:0 0 16px;
+  }
+  .fact-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .fact-card + .fact-card{margin-top:14px;}
+  .fact-card .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--teal);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    display:block;
+    margin-bottom:6px;
+  }
+  .fact-card .value{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:16px;
+    color:var(--navy);
+  }
+  .fact-card .sub{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-top:3px;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:18px;
+  }
+  .skill-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .skill-card:hover{
+    border-color:var(--teal);
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(17,26,46,0.06);
+  }
+  .skill-card h3{
+    font-size:14px;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--navy);
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .skill-card h3::before{
+    content:"";
+    width:6px;height:6px;
+    background:var(--teal);
+    border-radius:50%;
+    display:inline-block;
+  }
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+  }
+  .chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    background:var(--teal-soft);
+    color:var(--navy);
+    padding:7px 12px 7px 8px;
+    border-radius:6px;
+    border:1px solid rgba(47,129,163,0.15);
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .chip:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 14px rgba(17,26,46,0.08);
+  }
+  .chip img{
+    width:16px;
+    height:16px;
+    object-fit:contain;
+    flex-shrink:0;
+  }
+  .chip .chip-fallback{
+    width:16px;
+    height:16px;
+    border-radius:4px;
+    background:var(--navy);
+    color:#fff;
+    font-size:8px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    letter-spacing:0;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .project-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:32px;
+    position:relative;
+    overflow:hidden;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .project-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 22px 44px rgba(17,26,46,0.08);
+    border-color:var(--teal);
+  }
+  .project-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0;
+    width:4px; height:100%;
+    background:linear-gradient(180deg, var(--teal), var(--gold));
+    transform:scaleY(0);
+    transform-origin:top;
+    transition:transform .3s ease;
+  }
+  .project-card:hover::before{transform:scaleY(1);}
+
+  .project-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .project-title{
+    font-size:22px;
+    font-weight:600;
+    color:var(--navy);
+  }
+  .project-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-top:6px;
+    display:block;
+  }
+  .project-links{
+    display:flex;
+    gap:10px;
+    flex-shrink:0;
+  }
+  .project-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    text-decoration:none;
+    color:var(--navy);
+    border:1px solid var(--line);
+    padding:7px 12px;
+    border-radius:6px;
+    transition:all .2s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .project-links a:hover{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+  }
+  .project-tagline{
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:14.5px;
+    margin-bottom:16px;
+  }
+  .project-desc{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin-bottom:18px;
+    max-width:720px;
+  }
+  .project-highlights{
+    list-style:none;
+    margin:0 0 18px;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:10px 20px;
+  }
+  .project-highlights li{
+    font-size:14px;
+    color:var(--ink);
+    padding-left:18px;
+    position:relative;
+  }
+  .project-highlights li::before{
+    content:"→";
+    position:absolute;
+    left:0;
+    color:var(--teal);
+    font-weight:600;
+  }
+  .tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--navy);
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:5px 10px;
+    border-radius:5px;
+  }
+
+  /* ---------- EDUCATION / CERTS ---------- */
+  .timeline{
+    border-left:2px solid var(--line);
+    padding-left:28px;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+  .tl-item{position:relative;}
+  .tl-item::before{
+    content:"";
+    position:absolute;
+    left:-33px;
+    top:4px;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid var(--teal);
+  }
+  .tl-item .tl-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:16.5px;
+    color:var(--navy);
+  }
+  .tl-item .tl-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--teal);
+    margin-bottom:4px;
+    display:block;
+  }
+  .tl-item .tl-sub{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  .certs{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:16px;
+  }
+  .cert-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 22px;
+  }
+  .cert-card .cert-title{
+    font-weight:600;
+    color:var(--navy);
+    font-size:14.5px;
+    margin-bottom:8px;
+  }
+  .cert-card a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--teal);
+    text-decoration:none;
+  }
+  .cert-card a:hover{text-decoration:underline;}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    background:var(--navy-deep);
+    color:#B7C1D4;
+    padding:64px 0 32px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:32px;
+    margin-bottom:40px;
+  }
+  footer h2{
+    color:#fff;
+    font-size:26px;
+    margin-bottom:12px;
+  }
+  footer p{color:#8B96AC; max-width:420px; font-size:14.5px;}
+  .footer-links{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:#EDF1F7;
+    border:1px solid rgba(237,241,247,0.2);
+    padding:10px 16px;
+    border-radius:6px;
+    transition:all .2s ease;
+  }
+  .footer-links a:hover{
+    background:#8FD4E8;
+    color:#0E1626;
+    border-color:#8FD4E8;
+  }
+  .footer-bottom{
+    border-top:1px solid rgba(237,241,247,0.1);
+    padding-top:22px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:#5E6A82;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  @media (max-width: 860px){
+    .about-grid{grid-template-columns:1fr;}
+    nav.links{display:none;}
+    .sec-note{display:none;}
+  }
+  @media (max-width: 600px){
+    .hero{padding:76px 0 60px;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="dot"></span>V. Roopak</div>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <canvas id="graph"></canvas>
+  <div class="hero-inner">
+    <div class="eyebrow"><span>~/roopak/profile.init</span><span class="cursor"></span></div>
+    <h1>Building systems that keep<br><span class="accent">people, data, and time</span> in sync.</h1>
+    <p class="lede">Integrated M.Tech Software Engineering student at VIT Chennai. I build full‑stack products across web, mobile, and cloud — from AI‑powered study platforms to document‑automation tools.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View projects</a>
+      <a class="btn btn-ghost" href="#contact">Contact me</a>
+    </div>
+    <div class="hero-meta">
+      <span>Tamil Nadu, Chennai</span>
+      <a href="tel:+918015603533">+91 80156 03533</a>
+      <a href="mailto:roopakvenkatesan2007@gmail.com">roopakvenkatesan2007@gmail.com</a>
+      <a href="https://github.com/roopakv-glithub" target="_blank" rel="noopener">github.com/roopakv-glithub</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="sec-tag">01 — Profile</span>
+        <h2>About</h2>
+      </div>
+      <p class="sec-note">A short summary before the detail — skills, projects, and education follow.</p>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I'm a first‑year Integrated M.Tech Software Engineering student with a strong foundation in C, C++, Java, and Python, and hands‑on experience shipping full products — not just coursework. My projects span AI‑assisted platforms, mobile apps, and automation pipelines, usually built to solve a friction point I've run into myself.</p>
+        <p>I care about clean architecture as much as working demos: real‑time sync, secure multi‑tenant data, and pipelines that remove manual, repetitive work. I'm eager to bring that same rigor to collaborative teams, hackathons, and production codebases.</p>
+      </div>
+      <div class="reveal">
+        <div class="fact-card">
+          <span class="label">Currently</span>
+          <span class="value">Integrated M.Tech, Software Engineering</span>
+          <div class="sub">VIT Chennai · First Year (2025–2030)</div>
+        </div>
+        <div class="fact-card">
+          <span class="label">Focus areas</span>
+          <span class="value">Full‑stack, AI integration, automation</span>
+          <div class="sub">Flutter · Flask · Supabase · GPT‑4o</div>
+        </div>
+        <div class="fact-card">
+          <span class="label">Based in</span>
+          <span class="value">Chennai, Tamil Nadu, India</span>
+          <div class="sub">Open to remote collaboration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="sec-tag">02 — Toolset</span>
+        <h2>Skills</h2>
+      </div>
+      <p class="sec-note">Grouped by where each tool actually gets used, not just listed.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <h3>Programming Languages</h3>
+        <div class="chip-row">
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">C</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">C++</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">Java</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">Python</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Web Technologies</h3>
+        <div class="chip-row">
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">HTML</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">CSS</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">JavaScript</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask">Flask</span>
+          <span class="chip"><img data-icon src="https://cdn.simpleicons.org/apachetomcat/F8DC75" alt="Java Servlets">Java Servlets</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Databases</h3>
+        <div class="chip-row">
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">MySQL</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="SQL*Plus">SQL*Plus</span>
+          <span class="chip"><img data-icon src="https://cdn.simpleicons.org/supabase/3FCF8E" alt="Supabase">Supabase</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Mobile Development</h3>
+        <div class="chip-row">
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">Flutter</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" alt="Dart">Dart</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Automation &amp; Testing</h3>
+        <div class="chip-row">
+          <span class="chip"><img data-icon src="https://cdn.simpleicons.org/playwright/2EAD33" alt="Playwright">Playwright</span>
+          <span class="chip"><img data-icon src="https://cdn.simpleicons.org/zapier/FF4A00" alt="Zapier">Zapier</span>
+          <span class="chip"><img data-icon src="https://cdn.simpleicons.org/activepieces/6E41E2" alt="Activepieces">Activepieces</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Tools &amp; Platforms</h3>
+        <div class="chip-row">
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">GitHub</span>
+          <span class="chip"><img data-icon src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="sec-tag">03 — Selected work</span>
+        <h2>Projects</h2>
+      </div>
+      <p class="sec-note">Three shipped builds, from an AI study platform to an OCR pipeline for public data.</p>
+    </div>
+
+    <div class="projects">
+
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div>
+            <div class="project-title">StudySync</div>
+            <span class="project-role">Founder &amp; Engineer</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/roopakv-glithub" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://studysync-green-chi.vercel.app/" target="_blank" rel="noopener">Live showcase ↗</a>
+          </div>
+        </div>
+        <p class="project-tagline">Synchronize your studies, amplify your intelligence.</p>
+        <p class="project-desc">An intelligent academic ecosystem that merges real‑time cloud architecture, autonomous document processing, and deep‑context AI into one workspace for high‑performance student teams.</p>
+        <ul class="project-highlights">
+          <li>"Jarvis" — a custom GPT‑4o mentor that answers doubts using only the student's own uploaded course material</li>
+          <li>Automated OCR pipeline (CloudConvert V2) that aggregates every uploaded PDF into a searchable master study text</li>
+          <li>Multi‑tenant classrooms with unique join codes and strict data isolation per team</li>
+          <li>WebSocket real‑time chat with group rooms and private channels, plus automated deadline email alerts</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Supabase</span><span class="tag">GPT‑4o</span><span class="tag">CloudConvert API</span><span class="tag">Activepieces</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div>
+            <div class="project-title">Paper2Portal</div>
+            <span class="project-role">Author</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/roopakv-glithub/paper2portal" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+        <p class="project-tagline">Turn paper forms into portal‑ready data with AI.</p>
+        <p class="project-desc">An AI‑powered OCR application that transforms scanned Indian Election Form‑6A documents into structured, portal‑ready JSON — replacing manual data entry with fast, accurate digitization.</p>
+        <ul class="project-highlights">
+          <li>Extracts 18+ form fields using GPT‑4o‑mini Vision, returned as clean structured JSON</li>
+          <li>Flask + Flask‑CORS REST backend with secure Base64 image handling</li>
+          <li>Email validation on extracted contact data via the ZeroBounce API</li>
+          <li>Responsive front end for reviewing extracted data before it hits an external portal</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">JavaScript</span><span class="tag">GPT‑4o‑mini Vision</span><span class="tag">ZeroBounce API</span>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div>
+            <div class="project-title">Quiz Management System</div>
+            <span class="project-role">Author</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/roopakv-glithub/Quiz-Management-System" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://roopak-resume.netlify.app/ROOPAKPROJECT.pdf" target="_blank" rel="noopener">Report ↗</a>
+          </div>
+        </div>
+        <p class="project-desc">An end‑to‑end platform for creating, managing, and attempting quizzes, with score tracking, question randomization, and persistent database storage for results and questions.</p>
+        <ul class="project-highlights">
+          <li>Question bank with randomized delivery to reduce repeat attempts</li>
+          <li>Automatic scoring and result storage for every attempt</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">MySQL</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <h2>Let's build something.</h2>
+        <p>Open to internships, collaborative projects, and hackathons. The fastest way to reach me is email.</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:roopakvenkatesan2007@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/roopak-v-349319375" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://leetcode.com/u/roopak_2007/" target="_blank" rel="noopener">LeetCode</a>
+        <a href="https://github.com/roopakv-glithub" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 V. Roopak. Built with intent, not templates.</span>
+      <span>Chennai, India</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Icon fallback — if a logo CDN image fails, swap in initials badge
+  document.querySelectorAll('img[data-icon]').forEach(img => {
+    img.addEventListener('error', () => {
+      const label = img.getAttribute('alt') || '?';
+      const initials = label.replace(/[^A-Za-z0-9]/g, '').slice(0, 2).toUpperCase() || '?';
+      const badge = document.createElement('span');
+      badge.className = 'chip-fallback';
+      badge.textContent = initials;
+      img.replaceWith(badge);
+    }, { once: true });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Hero node graph — represents "sync" visually: nodes pulsing, connecting lines
+  const canvas = document.getElementById('graph');
+  const ctx = canvas.getContext('2d');
+  let w, h, nodes;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    w = canvas.width = canvas.offsetWidth * devicePixelRatio;
+    h = canvas.height = canvas.offsetHeight * devicePixelRatio;
+  }
+
+  function initNodes(){
+    const count = Math.max(18, Math.floor((canvas.offsetWidth * canvas.offsetHeight) / 26000));
+    nodes = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
+      vy: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
+      r: (Math.random() * 1.6 + 1) * devicePixelRatio
+    }));
+  }
+
+  function frame(){
+    ctx.clearRect(0, 0, w, h);
+    const linkDist = 150 * devicePixelRatio;
+
+    for(let i=0; i<nodes.length; i++){
+      const a = nodes[i];
+      a.x += a.vx; a.y += a.vy;
+      if(a.x < 0 || a.x > w) a.vx *= -1;
+      if(a.y < 0 || a.y > h) a.vy *= -1;
+
+      for(let j=i+1; j<nodes.length; j++){
+        const b = nodes[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < linkDist){
+          ctx.strokeStyle = `rgba(143,212,232,${(1 - dist/linkDist) * 0.28})`;
+          ctx.lineWidth = 1 * devicePixelRatio;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      ctx.fillStyle = 'rgba(143,212,232,0.55)';
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    if(!reducedMotion) requestAnimationFrame(frame);
+  }
+
+  function start(){
+    resize();
+    initNodes();
+    frame();
+  }
+  window.addEventListener('resize', () => { resize(); initNodes(); });
+  start();
+</script>
+
+</body>
+</html>
