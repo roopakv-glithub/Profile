@@ -1,4 +1,4 @@
-Live URL: https://profile-wjq6.vercel.app/
+Live URL: https://profile-wjq6.vercel.app/ \n
 Github profile:https://github.com/roopakv-glithub
 Project Repository:
 https://github.com/roopakv-glithub/StudySync
